@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		128C458D19314C1600FF2CE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C458C19314C1600FF2CE7 /* Foundation.framework */; };
+		128C458F19314C1600FF2CE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C458E19314C1600FF2CE7 /* CoreGraphics.framework */; };
+		128C459119314C1600FF2CE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C459019314C1600FF2CE7 /* UIKit.framework */; };
+		128C459719314C1600FF2CE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128C459519314C1600FF2CE7 /* InfoPlist.strings */; };
+		128C459919314C1600FF2CE7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 128C459819314C1600FF2CE7 /* main.m */; };
+		128C459D19314C1600FF2CE7 /* CornhubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 128C459C19314C1600FF2CE7 /* CornhubAppDelegate.m */; };
+		128C45A019314C1600FF2CE7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128C459E19314C1600FF2CE7 /* Main_iPhone.storyboard */; };
+		128C45A319314C1600FF2CE7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128C45A119314C1600FF2CE7 /* Main_iPad.storyboard */; };
+		128C45A619314C1600FF2CE7 /* CornhubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 128C45A519314C1600FF2CE7 /* CornhubViewController.m */; };
+		128C45A819314C1600FF2CE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128C45A719314C1600FF2CE7 /* Images.xcassets */; };
+		128C45AF19314C1600FF2CE7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C45AE19314C1600FF2CE7 /* XCTest.framework */; };
+		128C45B019314C1600FF2CE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C458C19314C1600FF2CE7 /* Foundation.framework */; };
+		128C45B119314C1600FF2CE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C459019314C1600FF2CE7 /* UIKit.framework */; };
+		128C45B919314C1600FF2CE7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 128C45B719314C1600FF2CE7 /* InfoPlist.strings */; };
+		128C45BB19314C1600FF2CE7 /* CornhubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 128C45BA19314C1600FF2CE7 /* CornhubTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		128C45B219314C1600FF2CE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 128C458119314C1600FF2CE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 128C458819314C1600FF2CE7;
+			remoteInfo = Cornhub;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		128C458919314C1600FF2CE7 /* Cornhub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cornhub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		128C458C19314C1600FF2CE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		128C458E19314C1600FF2CE7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		128C459019314C1600FF2CE7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		128C459419314C1600FF2CE7 /* Cornhub-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cornhub-Info.plist"; sourceTree = "<group>"; };
+		128C459619314C1600FF2CE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		128C459819314C1600FF2CE7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		128C459A19314C1600FF2CE7 /* Cornhub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cornhub-Prefix.pch"; sourceTree = "<group>"; };
+		128C459B19314C1600FF2CE7 /* CornhubAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CornhubAppDelegate.h; sourceTree = "<group>"; };
+		128C459C19314C1600FF2CE7 /* CornhubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CornhubAppDelegate.m; sourceTree = "<group>"; };
+		128C459F19314C1600FF2CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		128C45A219314C1600FF2CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		128C45A419314C1600FF2CE7 /* CornhubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CornhubViewController.h; sourceTree = "<group>"; };
+		128C45A519314C1600FF2CE7 /* CornhubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CornhubViewController.m; sourceTree = "<group>"; };
+		128C45A719314C1600FF2CE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		128C45AD19314C1600FF2CE7 /* CornhubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornhubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		128C45AE19314C1600FF2CE7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		128C45B619314C1600FF2CE7 /* CornhubTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CornhubTests-Info.plist"; sourceTree = "<group>"; };
+		128C45B819314C1600FF2CE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		128C45BA19314C1600FF2CE7 /* CornhubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CornhubTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		128C458619314C1600FF2CE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				128C458F19314C1600FF2CE7 /* CoreGraphics.framework in Frameworks */,
+				128C459119314C1600FF2CE7 /* UIKit.framework in Frameworks */,
+				128C458D19314C1600FF2CE7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		128C45AA19314C1600FF2CE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				128C45AF19314C1600FF2CE7 /* XCTest.framework in Frameworks */,
+				128C45B119314C1600FF2CE7 /* UIKit.framework in Frameworks */,
+				128C45B019314C1600FF2CE7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		128C458019314C1600FF2CE7 = {
+			isa = PBXGroup;
+			children = (
+				128C459219314C1600FF2CE7 /* Cornhub */,
+				128C45B419314C1600FF2CE7 /* CornhubTests */,
+				128C458B19314C1600FF2CE7 /* Frameworks */,
+				128C458A19314C1600FF2CE7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		128C458A19314C1600FF2CE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				128C458919314C1600FF2CE7 /* Cornhub.app */,
+				128C45AD19314C1600FF2CE7 /* CornhubTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		128C458B19314C1600FF2CE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				128C458C19314C1600FF2CE7 /* Foundation.framework */,
+				128C458E19314C1600FF2CE7 /* CoreGraphics.framework */,
+				128C459019314C1600FF2CE7 /* UIKit.framework */,
+				128C45AE19314C1600FF2CE7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		128C459219314C1600FF2CE7 /* Cornhub */ = {
+			isa = PBXGroup;
+			children = (
+				128C459B19314C1600FF2CE7 /* CornhubAppDelegate.h */,
+				128C459C19314C1600FF2CE7 /* CornhubAppDelegate.m */,
+				128C459E19314C1600FF2CE7 /* Main_iPhone.storyboard */,
+				128C45A119314C1600FF2CE7 /* Main_iPad.storyboard */,
+				128C45A419314C1600FF2CE7 /* CornhubViewController.h */,
+				128C45A519314C1600FF2CE7 /* CornhubViewController.m */,
+				128C45A719314C1600FF2CE7 /* Images.xcassets */,
+				128C459319314C1600FF2CE7 /* Supporting Files */,
+			);
+			path = Cornhub;
+			sourceTree = "<group>";
+		};
+		128C459319314C1600FF2CE7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				128C459419314C1600FF2CE7 /* Cornhub-Info.plist */,
+				128C459519314C1600FF2CE7 /* InfoPlist.strings */,
+				128C459819314C1600FF2CE7 /* main.m */,
+				128C459A19314C1600FF2CE7 /* Cornhub-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		128C45B419314C1600FF2CE7 /* CornhubTests */ = {
+			isa = PBXGroup;
+			children = (
+				128C45BA19314C1600FF2CE7 /* CornhubTests.m */,
+				128C45B519314C1600FF2CE7 /* Supporting Files */,
+			);
+			path = CornhubTests;
+			sourceTree = "<group>";
+		};
+		128C45B519314C1600FF2CE7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				128C45B619314C1600FF2CE7 /* CornhubTests-Info.plist */,
+				128C45B719314C1600FF2CE7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		128C458819314C1600FF2CE7 /* Cornhub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 128C45BE19314C1600FF2CE7 /* Build configuration list for PBXNativeTarget "Cornhub" */;
+			buildPhases = (
+				128C458519314C1600FF2CE7 /* Sources */,
+				128C458619314C1600FF2CE7 /* Frameworks */,
+				128C458719314C1600FF2CE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cornhub;
+			productName = Cornhub;
+			productReference = 128C458919314C1600FF2CE7 /* Cornhub.app */;
+			productType = "com.apple.product-type.application";
+		};
+		128C45AC19314C1600FF2CE7 /* CornhubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 128C45C119314C1600FF2CE7 /* Build configuration list for PBXNativeTarget "CornhubTests" */;
+			buildPhases = (
+				128C45A919314C1600FF2CE7 /* Sources */,
+				128C45AA19314C1600FF2CE7 /* Frameworks */,
+				128C45AB19314C1600FF2CE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				128C45B319314C1600FF2CE7 /* PBXTargetDependency */,
+			);
+			name = CornhubTests;
+			productName = CornhubTests;
+			productReference = 128C45AD19314C1600FF2CE7 /* CornhubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		128C458119314C1600FF2CE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Cornhub;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Swag;
+				TargetAttributes = {
+					128C45AC19314C1600FF2CE7 = {
+						TestTargetID = 128C458819314C1600FF2CE7;
+					};
+				};
+			};
+			buildConfigurationList = 128C458419314C1600FF2CE7 /* Build configuration list for PBXProject "Cornhub" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 128C458019314C1600FF2CE7;
+			productRefGroup = 128C458A19314C1600FF2CE7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				128C458819314C1600FF2CE7 /* Cornhub */,
+				128C45AC19314C1600FF2CE7 /* CornhubTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		128C458719314C1600FF2CE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				128C45A319314C1600FF2CE7 /* Main_iPad.storyboard in Resources */,
+				128C45A819314C1600FF2CE7 /* Images.xcassets in Resources */,
+				128C45A019314C1600FF2CE7 /* Main_iPhone.storyboard in Resources */,
+				128C459719314C1600FF2CE7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		128C45AB19314C1600FF2CE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				128C45B919314C1600FF2CE7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		128C458519314C1600FF2CE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				128C459D19314C1600FF2CE7 /* CornhubAppDelegate.m in Sources */,
+				128C459919314C1600FF2CE7 /* main.m in Sources */,
+				128C45A619314C1600FF2CE7 /* CornhubViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		128C45A919314C1600FF2CE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				128C45BB19314C1600FF2CE7 /* CornhubTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		128C45B319314C1600FF2CE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 128C458819314C1600FF2CE7 /* Cornhub */;
+			targetProxy = 128C45B219314C1600FF2CE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		128C459519314C1600FF2CE7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				128C459619314C1600FF2CE7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		128C459E19314C1600FF2CE7 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				128C459F19314C1600FF2CE7 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		128C45A119314C1600FF2CE7 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				128C45A219314C1600FF2CE7 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		128C45B719314C1600FF2CE7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				128C45B819314C1600FF2CE7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		128C45BC19314C1600FF2CE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		128C45BD19314C1600FF2CE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		128C45BF19314C1600FF2CE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Cornhub/Cornhub-Prefix.pch";
+				INFOPLIST_FILE = "Cornhub/Cornhub-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		128C45C019314C1600FF2CE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Cornhub/Cornhub-Prefix.pch";
+				INFOPLIST_FILE = "Cornhub/Cornhub-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		128C45C219314C1600FF2CE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cornhub.app/Cornhub";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Cornhub/Cornhub-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CornhubTests/CornhubTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		128C45C319314C1600FF2CE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cornhub.app/Cornhub";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Cornhub/Cornhub-Prefix.pch";
+				INFOPLIST_FILE = "CornhubTests/CornhubTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		128C458419314C1600FF2CE7 /* Build configuration list for PBXProject "Cornhub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				128C45BC19314C1600FF2CE7 /* Debug */,
+				128C45BD19314C1600FF2CE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		128C45BE19314C1600FF2CE7 /* Build configuration list for PBXNativeTarget "Cornhub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				128C45BF19314C1600FF2CE7 /* Debug */,
+				128C45C019314C1600FF2CE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		128C45C119314C1600FF2CE7 /* Build configuration list for PBXNativeTarget "CornhubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				128C45C219314C1600FF2CE7 /* Debug */,
+				128C45C319314C1600FF2CE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 128C458119314C1600FF2CE7 /* Project object */;
+}
