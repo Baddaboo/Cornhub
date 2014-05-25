@@ -6,7 +6,11 @@ import time
 import calendar
 from math import *
 from py2neo import neo4j
+import cPickle as pickle
+
 graph_db = neo4j.GraphDatabaseService()
+
+hashTagCacheList = []
 
 def cache_tweet(hashtag,tweet,user,timestamp,index,id,prop_node):
 	nodes = index.get("id",id)
@@ -70,7 +74,7 @@ def cache_nodetoprop(prop_node, node_id):
 def get_cached_propnodes(prop_node):
 	return json.loads(prop_node["cached_tweets"])
 
-def update_hashtag(hashtag,timerange,count):
+def update_hashtag(hashtag,timerange,count,flag=0):
 	hashtag = hashtag.upper()
 	hashtag = preprocess(hashtag)
 	index = graph_db.get_or_create_index(neo4j.Node, hashtag)
@@ -85,20 +89,39 @@ def update_hashtag(hashtag,timerange,count):
 	if timerange != "":
 		query += " until:"
 		query += timerange
-	
-	r = api.request('search/tweets', {'q':query, 'count':count})
-	for item in r.get_iterator():
-		tweet = item["text"]
-		id = item["id"]
-		user = item["user"]["screen_name"]
-		timestamp = item["created_at"]
-		timestamp = timestamp.split(' ')
-		timestamp2 = timestamp[0]+" "+timestamp[1]+" "+timestamp[2]+" "+timestamp[3]+" "+timestamp[5]
-		pattern = '%a %b %d %H:%M:%S %Y'
-		epoch = str(int(time.mktime(time.strptime(timestamp2, pattern))))
-		node = cache_tweet(hashtag,tweet,user,epoch,index,id,prop_node)
-		if node == 0:
+	#for i in range(1, 3):
+	for i in [1]:
+		#r = api.request('search/tweets', {'q':query, 'count':count, 'page': i})
+		r = api.request('search/tweets', {'q':query, 'count':count } )
+		for item in r.get_iterator():
+			try:
+				tweet = item["text"]
+				id = item["id"]
+				user = item["user"]["screen_name"]
+				timestamp = item["created_at"]
+				timestamp = timestamp.split(' ')
+				timestamp2 = timestamp[0]+" "+timestamp[1]+" "+timestamp[2]+" "+timestamp[3]+" "+timestamp[5]
+				pattern = '%a %b %d %H:%M:%S %Y'
+				epoch = str(int(time.mktime(time.strptime(timestamp2, pattern))))
+				node = cache_tweet(hashtag,tweet,user,epoch,index,id,prop_node)
+				if node == 0:
+					break
+			except KeyError :
+				continue
+		if flag :
 			break
+	
+
+#	try:
+#		f = open( "hashtaglist.p", 'r')
+#		hashtaglist = pickle.load( f )
+#		f.close()
+#		hashtaglist.append( hashtag )
+#		pickle.dump( hashtaglist, open( "hashtaglist.p", "wb" ) )
+#	except IOError:
+#		pickle.dump( [ hashtag ], open( "hashtaglist.p", "wb" ) )
+
+
 
 def return_sentiment(hashtag):
 	orig = hashtag
