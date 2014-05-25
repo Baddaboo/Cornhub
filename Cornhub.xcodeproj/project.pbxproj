@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126CB1EE193153CA001AC191 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CB1ED193153CA001AC191 /* LoginViewController.m */; };
+		126CB1F0193160F7001AC191 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 126CB1EF193160F7001AC191 /* Social.framework */; };
+		126CB1F2193160FC001AC191 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 126CB1F1193160FC001AC191 /* Accounts.framework */; };
+		126CB1F519316917001AC191 /* UIImage+RoundedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CB1F419316917001AC191 /* UIImage+RoundedImage.m */; };
+		126CB1F919319A92001AC191 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CB1F819319A92001AC191 /* XYPieChart.m */; };
+		126CB1FC19319B2C001AC191 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CB1FB19319B2C001AC191 /* ChartViewController.m */; };
+		126CB2001931A110001AC191 /* Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CB1FD1931A110001AC191 /* Up.png */; };
+		126CB2011931A110001AC191 /* Down.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CB1FE1931A110001AC191 /* Down.png */; };
+		126CB2021931A110001AC191 /* Neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CB1FF1931A110001AC191 /* Neutral.png */; };
+		126CB2061931A1BF001AC191 /* NeutralSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CB2031931A1BF001AC191 /* NeutralSel.png */; };
+		126CB2071931A1BF001AC191 /* DownSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CB2041931A1BF001AC191 /* DownSel.png */; };
+		126CB2081931A1BF001AC191 /* UpSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 126CB2051931A1BF001AC191 /* UpSel.png */; };
+		126CB20C1931BBEB001AC191 /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 126CB20B1931BBEB001AC191 /* TweetsViewController.m */; };
 		128C458D19314C1600FF2CE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C458C19314C1600FF2CE7 /* Foundation.framework */; };
 		128C458F19314C1600FF2CE7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C458E19314C1600FF2CE7 /* CoreGraphics.framework */; };
 		128C459119314C1600FF2CE7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C459019314C1600FF2CE7 /* UIKit.framework */; };
@@ -15,7 +28,6 @@
 		128C459D19314C1600FF2CE7 /* CornhubAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 128C459C19314C1600FF2CE7 /* CornhubAppDelegate.m */; };
 		128C45A019314C1600FF2CE7 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128C459E19314C1600FF2CE7 /* Main_iPhone.storyboard */; };
 		128C45A319314C1600FF2CE7 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128C45A119314C1600FF2CE7 /* Main_iPad.storyboard */; };
-		128C45A619314C1600FF2CE7 /* CornhubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 128C45A519314C1600FF2CE7 /* CornhubViewController.m */; };
 		128C45A819314C1600FF2CE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 128C45A719314C1600FF2CE7 /* Images.xcassets */; };
 		128C45AF19314C1600FF2CE7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C45AE19314C1600FF2CE7 /* XCTest.framework */; };
 		128C45B019314C1600FF2CE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C458C19314C1600FF2CE7 /* Foundation.framework */; };
@@ -35,6 +47,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		126CB1EC193153CA001AC191 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		126CB1ED193153CA001AC191 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		126CB1EF193160F7001AC191 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		126CB1F1193160FC001AC191 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		126CB1F319316917001AC191 /* UIImage+RoundedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedImage.h"; sourceTree = "<group>"; };
+		126CB1F419316917001AC191 /* UIImage+RoundedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedImage.m"; sourceTree = "<group>"; };
+		126CB1F719319A92001AC191 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		126CB1F819319A92001AC191 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		126CB1FA19319B2C001AC191 /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
+		126CB1FB19319B2C001AC191 /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
+		126CB1FD1931A110001AC191 /* Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Up.png; sourceTree = "<group>"; };
+		126CB1FE1931A110001AC191 /* Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Down.png; sourceTree = "<group>"; };
+		126CB1FF1931A110001AC191 /* Neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Neutral.png; sourceTree = "<group>"; };
+		126CB2031931A1BF001AC191 /* NeutralSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NeutralSel.png; sourceTree = "<group>"; };
+		126CB2041931A1BF001AC191 /* DownSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownSel.png; sourceTree = "<group>"; };
+		126CB2051931A1BF001AC191 /* UpSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpSel.png; sourceTree = "<group>"; };
+		126CB20A1931BBEB001AC191 /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
+		126CB20B1931BBEB001AC191 /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
 		128C458919314C1600FF2CE7 /* Cornhub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cornhub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		128C458C19314C1600FF2CE7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		128C458E19314C1600FF2CE7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,8 +77,6 @@
 		128C459C19314C1600FF2CE7 /* CornhubAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CornhubAppDelegate.m; sourceTree = "<group>"; };
 		128C459F19314C1600FF2CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		128C45A219314C1600FF2CE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		128C45A419314C1600FF2CE7 /* CornhubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CornhubViewController.h; sourceTree = "<group>"; };
-		128C45A519314C1600FF2CE7 /* CornhubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CornhubViewController.m; sourceTree = "<group>"; };
 		128C45A719314C1600FF2CE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		128C45AD19314C1600FF2CE7 /* CornhubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CornhubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		128C45AE19314C1600FF2CE7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -62,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126CB1F2193160FC001AC191 /* Accounts.framework in Frameworks */,
+				126CB1F0193160F7001AC191 /* Social.framework in Frameworks */,
 				128C458F19314C1600FF2CE7 /* CoreGraphics.framework in Frameworks */,
 				128C459119314C1600FF2CE7 /* UIKit.framework in Frameworks */,
 				128C458D19314C1600FF2CE7 /* Foundation.framework in Frameworks */,
@@ -103,6 +133,8 @@
 		128C458B19314C1600FF2CE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				126CB1F1193160FC001AC191 /* Accounts.framework */,
+				126CB1EF193160F7001AC191 /* Social.framework */,
 				128C458C19314C1600FF2CE7 /* Foundation.framework */,
 				128C458E19314C1600FF2CE7 /* CoreGraphics.framework */,
 				128C459019314C1600FF2CE7 /* UIKit.framework */,
@@ -117,9 +149,13 @@
 				128C459B19314C1600FF2CE7 /* CornhubAppDelegate.h */,
 				128C459C19314C1600FF2CE7 /* CornhubAppDelegate.m */,
 				128C459E19314C1600FF2CE7 /* Main_iPhone.storyboard */,
+				126CB20A1931BBEB001AC191 /* TweetsViewController.h */,
+				126CB20B1931BBEB001AC191 /* TweetsViewController.m */,
+				126CB1FA19319B2C001AC191 /* ChartViewController.h */,
+				126CB1FB19319B2C001AC191 /* ChartViewController.m */,
+				126CB1EC193153CA001AC191 /* LoginViewController.h */,
+				126CB1ED193153CA001AC191 /* LoginViewController.m */,
 				128C45A119314C1600FF2CE7 /* Main_iPad.storyboard */,
-				128C45A419314C1600FF2CE7 /* CornhubViewController.h */,
-				128C45A519314C1600FF2CE7 /* CornhubViewController.m */,
 				128C45A719314C1600FF2CE7 /* Images.xcassets */,
 				128C459319314C1600FF2CE7 /* Supporting Files */,
 			);
@@ -129,6 +165,16 @@
 		128C459319314C1600FF2CE7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				126CB2031931A1BF001AC191 /* NeutralSel.png */,
+				126CB2041931A1BF001AC191 /* DownSel.png */,
+				126CB2051931A1BF001AC191 /* UpSel.png */,
+				126CB1FD1931A110001AC191 /* Up.png */,
+				126CB1FE1931A110001AC191 /* Down.png */,
+				126CB1FF1931A110001AC191 /* Neutral.png */,
+				126CB1F719319A92001AC191 /* XYPieChart.h */,
+				126CB1F819319A92001AC191 /* XYPieChart.m */,
+				126CB1F319316917001AC191 /* UIImage+RoundedImage.h */,
+				126CB1F419316917001AC191 /* UIImage+RoundedImage.m */,
 				128C459419314C1600FF2CE7 /* Cornhub-Info.plist */,
 				128C459519314C1600FF2CE7 /* InfoPlist.strings */,
 				128C459819314C1600FF2CE7 /* main.m */,
@@ -232,10 +278,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126CB2061931A1BF001AC191 /* NeutralSel.png in Resources */,
+				126CB2001931A110001AC191 /* Up.png in Resources */,
+				126CB2021931A110001AC191 /* Neutral.png in Resources */,
 				128C45A319314C1600FF2CE7 /* Main_iPad.storyboard in Resources */,
+				126CB2071931A1BF001AC191 /* DownSel.png in Resources */,
 				128C45A819314C1600FF2CE7 /* Images.xcassets in Resources */,
+				126CB2011931A110001AC191 /* Down.png in Resources */,
 				128C45A019314C1600FF2CE7 /* Main_iPhone.storyboard in Resources */,
 				128C459719314C1600FF2CE7 /* InfoPlist.strings in Resources */,
+				126CB2081931A1BF001AC191 /* UpSel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,8 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				128C459D19314C1600FF2CE7 /* CornhubAppDelegate.m in Sources */,
+				126CB1FC19319B2C001AC191 /* ChartViewController.m in Sources */,
+				126CB1F519316917001AC191 /* UIImage+RoundedImage.m in Sources */,
 				128C459919314C1600FF2CE7 /* main.m in Sources */,
-				128C45A619314C1600FF2CE7 /* CornhubViewController.m in Sources */,
+				126CB1F919319A92001AC191 /* XYPieChart.m in Sources */,
+				126CB1EE193153CA001AC191 /* LoginViewController.m in Sources */,
+				126CB20C1931BBEB001AC191 /* TweetsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +527,7 @@
 				128C45C019314C1600FF2CE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		128C45C119314C1600FF2CE7 /* Build configuration list for PBXNativeTarget "CornhubTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +536,7 @@
 				128C45C319314C1600FF2CE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
