@@ -38,7 +38,23 @@ def cache_tweet(hashtag,tweet,user,timestamp,index,id,prop_node):
 		prop_node.update_properties({"day_" + day : temp})
 		#print(node["timestamp"])
 		#print(prop_node["day_" + day])
+		cache_nodetoprop(prop_node, node._id)
 		return node._id
+
+def cache_nodetoprop(prop_node, node_id):
+	nodes_raw = prop_node["cached_tweets"]
+	if nodes_raw: 
+		queue = json.loads(nodes_raw)
+	else:
+		queue = list()
+	queue.insert(0, node_id)
+	if len(queue) > 50:
+		queue.pop()
+	prop_node["cached_tweets"] = json.dumps(queue)
+	return True
+
+def get_cached_propnodes(prop_node):
+	return json.loads(prop_node["cached_tweets"])
 
 def sentiment(tweet):
 	return datum_box.twitter_sentiment_analysis(tweet)
