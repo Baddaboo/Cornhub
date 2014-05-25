@@ -10,9 +10,12 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "UIImage+RoundedImage.h"
+#import <ifaddrs.h>
+#import <arpa/inet.h>
 
 @interface LoginViewController ()
-
+@property (strong, nonatomic) NSString *ipaddress;
+@property (strong, nonatomic) NSString *urlString;
 @end
 
 @implementation LoginViewController
@@ -32,6 +35,44 @@
     [self.loginActivity setHidden:YES];
     [self.nameField setDelegate:self];
     // Do any additional setup after loading the view.
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://107.170.232.159:9090/?keyword=Obama"]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(!connectionError){
+            NSError *error;
+            NSObject *val = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+            NSLog(@"Data: %@",val);
+        }else{
+            NSLog(@"%@",[connectionError localizedDescription]);
+        }
+    }];
+    self.ipaddress = [self GetOurIpAddress];
+}
+
+- (NSString *)GetOurIpAddress
+{
+    NSString *address = @"error";
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    int success = 0;
+    // retrieve the current interfaces - returns 0 on success
+    success = getifaddrs(&interfaces);
+    if (success == 0) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while(temp_addr != NULL) {
+            if(temp_addr->ifa_addr->sa_family == AF_INET) {
+                // Check if interface is en0 which is the wifi connection on the iPhone
+                if([[NSString stringWithUTF8String:temp_addr->ifa_name] isEqualToString:@"en0"]) {
+                    // Get NSString from C String
+                    address = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)];
+                }
+            }
+            temp_addr = temp_addr->ifa_next;
+        }
+    }
+    // Free memory
+    freeifaddrs(interfaces);
+    return address;
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,11 +97,41 @@
     
     return YES;
 }
-- (IBAction)textDidChange:(id)sender{
-    NSLog(@"%@",[self.nameField text]);
-    [self getInfo];
+- (IBAction)textDidChange:(id)sender{ 
+    [self.loginActivity setHidden:NO];
+    [self.loginActivity startAnimating];
+    [self getImage];
 }
 
+- (void) getImage{
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgtype=photo&safe=active&q=%@&userip=%@",[[self.nameField text] stringByReplacingOccurrencesOfString:@" " withString:@"%20"],self.ipaddress]]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(!connectionError && data != nil){
+            NSError *error;
+            id val = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+            NSLog(@"%@",val);
+            if (!error && [[val objectForKey:@"responseStatus"] integerValue] != 403 && val != nil && [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] count] > 0){
+                if (self.urlString != [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] objectAtIndex:0]){
+                    self.urlString = [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] objectAtIndex:0];
+                    [NSOperationQueue cancelPreviousPerformRequestsWithTarget:nil];
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.urlString]];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            // Update the UI
+                            self.userImageView.image = [UIImage imageWithData:imageData];
+                            [self.loginActivity stopAnimating];
+                            [self.loginActivity setHidden:YES];
+                        });
+                    });
+                }
+            }else{
+                NSLog(@"%@",error);
+            }
+        }else{
+            NSLog(@"%@",[connectionError localizedDescription]);
+        }
+    }];
+}
 - (void) getInfo
 {
     // Request access to the Twitter accounts
