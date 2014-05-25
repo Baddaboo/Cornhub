@@ -16,6 +16,7 @@
 @interface LoginViewController ()
 @property (strong, nonatomic) NSString *ipaddress;
 @property (strong, nonatomic) NSString *urlString;
+@property (strong, nonatomic) NSOperationQueue *queryQueue;
 @end
 
 @implementation LoginViewController
@@ -46,6 +47,7 @@
         }
     }];
     self.ipaddress = [self GetOurIpAddress];
+    self.queryQueue = [[NSOperationQueue alloc] init];
 }
 
 - (NSString *)GetOurIpAddress
@@ -104,8 +106,9 @@
 }
 
 - (void) getImage{
+    [self.queryQueue cancelAllOperations];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgtype=photo&safe=active&q=%@&userip=%@",[[self.nameField text] stringByReplacingOccurrencesOfString:@" " withString:@"%20"],self.ipaddress]]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:request queue:self.queryQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(!connectionError && data != nil){
             NSError *error;
             id val = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
@@ -113,15 +116,13 @@
             if (!error && [[val objectForKey:@"responseStatus"] integerValue] != 403 && val != nil && [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] count] > 0){
                 if (self.urlString != [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] objectAtIndex:0]){
                     self.urlString = [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] objectAtIndex:0];
-                    [NSOperationQueue cancelPreviousPerformRequestsWithTarget:nil];
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                    dispatch_async(dispatch_get_main_queue(), ^{
                         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.urlString]];
-                        dispatch_async(dispatch_get_main_queue(), ^{
                             // Update the UI
                             self.userImageView.image = [UIImage imageWithData:imageData];
                             [self.loginActivity stopAnimating];
                             [self.loginActivity setHidden:YES];
-                        });
+                        
                     });
                 }
             }else{
