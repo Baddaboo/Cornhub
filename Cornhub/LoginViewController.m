@@ -119,6 +119,11 @@
                     [self.userImageView setImageWithURL:[NSURL URLWithString:self.urlString]];
                     [self.loginActivity stopAnimating];
                     [self.loginActivity setHidden:YES];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.navigationController.navigationBar setBarTintColor:[self.userImageView.image averageColor]];
+                        [self.view setBackgroundColor:[[self.userImageView.image averageColor] colorWithAlphaComponent:1]];
+                        [self.navigationController.navigationBar setTintColor:[[self.view backgroundColor]  blackOrWhiteContrastingColor]];
+                    });
                 }
             }else{
                 NSLog(@"%@",error);
@@ -127,11 +132,6 @@
             NSLog(@"%@",[connectionError localizedDescription]);
         }
     }];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.navigationController.navigationBar setBarTintColor:[self.userImageView.image averageColor]];
-        [self.view setBackgroundColor:[[self.userImageView.image averageColor] colorWithAlphaComponent:1]];
-        [self.navigationController.navigationBar setTintColor:[[self.view backgroundColor]  blackOrWhiteContrastingColor]];
-    });
 
 }
 
