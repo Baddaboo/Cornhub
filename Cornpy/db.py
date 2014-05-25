@@ -89,19 +89,19 @@ def return_sentiment(hashtag):
 	hashtag = preprocess(hashtag)
 
 	results_positive = {"total":0}
-	for i in range(0,31):
+	for i in range(0,7):
 		results_positive[str(i)] = 0
 
 	results_neutral = {"total":0}
-	for i in range(0,31):
+	for i in range(0,7):
 		results_neutral[str(i)] = 0
 
 	results_negative = {"total":0}
-	for i in range(0,31):
+	for i in range(0,7):
 		results_negative[str(i)] = 0
 
 	results_relative = {"total":0}
-	for i in range(0,31):
+	for i in range(0,7):
 		results_relative[str(i)] = 0
 
 	index = graph_db.get_or_create_index(neo4j.Node, hashtag)
@@ -109,7 +109,7 @@ def return_sentiment(hashtag):
 	today = int(time.time()) + 4 * 3600
 
 	for item in nodes:
-		for i in range(0,31):
+		for i in range(0,7):
 			day = int(floor((int(today)-86400*i)/86400))
 			res = item["day_"+str(day)]
 			if res == None:
@@ -131,7 +131,7 @@ def return_sentiment(hashtag):
 	#total_stats[3] = {"relative": results_relative["total"]}
 
 	data = dict()
-	for i in range(0,31):
+	for i in range(0,7):
 		#date = datetime.datetime.fromtimestamp(today-86400*i).strftime('%m-%d-%Y')
 		date = int(floor((int(today)-86400*i)/86400) * 86400)
 		data[i] = {"date":date, "positive":results_positive[str(i)], "neutral":results_neutral[str(i)], "negative":results_negative[str(i)], "relative": results_relative[str(i)]}
