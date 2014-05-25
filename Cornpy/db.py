@@ -6,7 +6,11 @@ import time
 import calendar
 from math import *
 from py2neo import neo4j
+import cPickle as pickle
+
 graph_db = neo4j.GraphDatabaseService()
+
+hashTagCacheList = []
 
 def cache_tweet(hashtag,tweet,user,timestamp,index,id,prop_node):
 	nodes = index.get("id",id)
@@ -36,6 +40,14 @@ def cache_tweet(hashtag,tweet,user,timestamp,index,id,prop_node):
 		temp[ratingvar] += 1
 		prop_node.update_properties({"day_" + day : temp})
 
+		#cache tridaily sentiment analysis
+		hour = str(int(floor(int(timestamp)/(3600*8))))
+		if prop_node["tridaily_" + hour] == None:
+			prop_node["tridaily_" + hour] = [0,0,0]
+		temp = prop_node["tridaily_" + hour]
+		temp[ratingvar] += 1
+		prop_node.update_properties({"tridaily_" + hour : temp})
+
 		#cache hourly sentiment analysis
 		hour = str(int(floor(int(timestamp)/3600)))
 		if prop_node["hour_" + hour] == None:
@@ -62,7 +74,7 @@ def cache_nodetoprop(prop_node, node_id):
 def get_cached_propnodes(prop_node):
 	return json.loads(prop_node["cached_tweets"])
 
-def update_hashtag(hashtag,timerange,count):
+def update_hashtag(hashtag,timerange,count,flag=0):
 	hashtag = hashtag.upper()
 	hashtag = preprocess(hashtag)
 	index = graph_db.get_or_create_index(neo4j.Node, hashtag)
@@ -77,20 +89,39 @@ def update_hashtag(hashtag,timerange,count):
 	if timerange != "":
 		query += " until:"
 		query += timerange
-	
-	r = api.request('search/tweets', {'q':query, 'count':count})
-	for item in r.get_iterator():
-		tweet = item["text"]
-		id = item["id"]
-		user = item["user"]["screen_name"]
-		timestamp = item["created_at"]
-		timestamp = timestamp.split(' ')
-		timestamp2 = timestamp[0]+" "+timestamp[1]+" "+timestamp[2]+" "+timestamp[3]+" "+timestamp[5]
-		pattern = '%a %b %d %H:%M:%S %Y'
-		epoch = str(int(time.mktime(time.strptime(timestamp2, pattern))))
-		node = cache_tweet(hashtag,tweet,user,epoch,index,id,prop_node)
-		if node == 0:
+	#for i in range(1, 3):
+	for i in [1]:
+		#r = api.request('search/tweets', {'q':query, 'count':count, 'page': i})
+		r = api.request('search/tweets', {'q':query, 'count':count } )
+		for item in r.get_iterator():
+			try:
+				tweet = item["text"]
+				id = item["id"]
+				user = item["user"]["screen_name"]
+				timestamp = item["created_at"]
+				timestamp = timestamp.split(' ')
+				timestamp2 = timestamp[0]+" "+timestamp[1]+" "+timestamp[2]+" "+timestamp[3]+" "+timestamp[5]
+				pattern = '%a %b %d %H:%M:%S %Y'
+				epoch = str(int(time.mktime(time.strptime(timestamp2, pattern))))
+				node = cache_tweet(hashtag,tweet,user,epoch,index,id,prop_node)
+				if node == 0:
+					break
+			except KeyError :
+				continue
+		if flag :
 			break
+	
+
+#	try:
+#		f = open( "hashtaglist.p", 'r')
+#		hashtaglist = pickle.load( f )
+#		f.close()
+#		hashtaglist.append( hashtag )
+#		pickle.dump( hashtaglist, open( "hashtaglist.p", "wb" ) )
+#	except IOError:
+#		pickle.dump( [ hashtag ], open( "hashtaglist.p", "wb" ) )
+
+
 
 def return_sentiment(hashtag):
 	orig = hashtag
@@ -138,6 +169,57 @@ def return_sentiment(hashtag):
 	data = dict()
 	for i in range(0,7):
 		date = int(floor((int(today)-86400*i)/86400) * 86400)
+		data[i] = {"date":date, "positive":results_positive[str(i)], "neutral":results_neutral[str(i)], "negative":results_negative[str(i)], "relative": results_relative[str(i)]}
+
+	results = {"success": True, "keyword": orig, "statistics":total_stats, "data":data}
+	return json.dumps(results)
+
+def return_sentiment_tridaily(hashtag):
+	orig = hashtag
+	hashtag = hashtag.upper()
+	hashtag = preprocess(hashtag)
+
+	results_positive = {"total":0}
+	for i in range(0,24):
+		results_positive[str(i)] = 0
+
+	results_neutral = {"total":0}
+	for i in range(0,24):
+		results_neutral[str(i)] = 0
+
+	results_negative = {"total":0}
+	for i in range(0,24):
+		results_negative[str(i)] = 0
+
+	results_relative = {"total":0}
+	for i in range(0,24):
+		results_relative[str(i)] = 0
+
+	index = graph_db.get_or_create_index(neo4j.Node, hashtag)
+	nodes = index.query("node:*")
+	today = int(time.time()) + 4 * 3600
+
+	for item in nodes:
+		for i in range(0,24):
+			day = int(floor((int(today)-28800*i)/28800))
+			res = item["tridaily_"+str(day)]
+			if res == None:
+				res = [0,0,0]
+			results_positive[str(i)] = res[0]
+			results_negative[str(i)] = res[2]
+			results_neutral[str(i)] = res[1]
+			results_relative[str(i)] = res[0] - res[2]
+
+			results_positive["total"] += results_positive[str(i)]
+			results_negative["total"] += results_negative[str(i)]
+			results_neutral["total"] += results_neutral[str(i)]
+			results_relative["total"] += results_relative[str(i)]
+
+	total_stats = {"positive": results_positive["total"],"negative": results_negative["total"],"neutral": results_neutral["total"],"relative": results_relative["total"]}
+
+	data = dict()
+	for i in range(0,24):
+		date = int(floor((int(today)-28800*i)/28800) * 28800)
 		data[i] = {"date":date, "positive":results_positive[str(i)], "neutral":results_neutral[str(i)], "negative":results_negative[str(i)], "relative": results_relative[str(i)]}
 
 	results = {"success": True, "keyword": orig, "statistics":total_stats, "data":data}
