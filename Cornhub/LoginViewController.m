@@ -10,9 +10,12 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "UIImage+RoundedImage.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIImage+AverageColor.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
-
+#import "ChartFinalViewController.h"
+#import "UIColor-MJGAdditions.h"
 @interface LoginViewController ()
 @property (strong, nonatomic) NSString *ipaddress;
 @property (strong, nonatomic) NSString *urlString;
@@ -36,18 +39,13 @@
     [self.loginActivity setHidden:YES];
     [self.nameField setDelegate:self];
     // Do any additional setup after loading the view.
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://107.170.232.159:9090/?keyword=Obama"]];
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if(!connectionError){
-            NSError *error;
-            NSObject *val = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-            NSLog(@"Data: %@",val);
-        }else{
-            NSLog(@"%@",[connectionError localizedDescription]);
-        }
-    }];
+    
     self.ipaddress = [self GetOurIpAddress];
     self.queryQueue = [[NSOperationQueue alloc] init];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.nameField becomeFirstResponder];
 }
 
 - (NSString *)GetOurIpAddress
@@ -96,7 +94,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    
+    [[NSUserDefaults standardUserDefaults] setObject:[self.nameField text] forKey:@"searchKey"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self performSegueWithIdentifier:@"detailPush" sender:self];
     return YES;
 }
 - (IBAction)textDidChange:(id)sender{ 
@@ -106,24 +106,19 @@
 }
 
 - (void) getImage{
-    [self.queryQueue cancelAllOperations];
+    
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://ajax.googleapis.com/ajax/services/search/images?v=1.0&rsz=1&imgtype=photo&safe=active&q=%@&userip=%@",[[self.nameField text] stringByReplacingOccurrencesOfString:@" " withString:@"%20"],self.ipaddress]]];
     [NSURLConnection sendAsynchronousRequest:request queue:self.queryQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if(!connectionError && data != nil){
             NSError *error;
-            id val = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-            NSLog(@"%@",val);
+            [self.queryQueue cancelAllOperations];
+            id val = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             if (!error && [[val objectForKey:@"responseStatus"] integerValue] != 403 && val != nil && [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] count] > 0){
                 if (self.urlString != [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] objectAtIndex:0]){
                     self.urlString = [[[[val objectForKey:@"responseData"] objectForKey:@"results"] valueForKey:@"url"] objectAtIndex:0];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.urlString]];
-                            // Update the UI
-                            self.userImageView.image = [UIImage imageWithData:imageData];
-                            [self.loginActivity stopAnimating];
-                            [self.loginActivity setHidden:YES];
-                        
-                    });
+                    [self.userImageView setImageWithURL:[NSURL URLWithString:self.urlString]];
+                    [self.loginActivity stopAnimating];
+                    [self.loginActivity setHidden:YES];
                 }
             }else{
                 NSLog(@"%@",error);
@@ -132,7 +127,14 @@
             NSLog(@"%@",[connectionError localizedDescription]);
         }
     }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationController.navigationBar setBarTintColor:[self.userImageView.image averageColor]];
+        [self.view setBackgroundColor:[[self.userImageView.image averageColor] colorWithAlphaComponent:1]];
+        [self.navigationController.navigationBar setTintColor:[[self.view backgroundColor]  blackOrWhiteContrastingColor]];
+    });
+
 }
+
 - (void) getInfo
 {
     // Request access to the Twitter accounts
@@ -242,12 +244,5 @@
             NSLog(@"No access granted");
         }
     }];
-}
-
-- (IBAction)loginButtonPressed:(id)sender {
-    [self.loginActivity setHidden:NO];
-    [self.loginActivity startAnimating];
-    [self.loginActivity stopAnimating];
-    [self.loginActivity setHidden:YES];
 }
 @end

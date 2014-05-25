@@ -40,7 +40,6 @@
     //[self.pieChart setPieCenter:[self.pieChart center]];
     [self.pieChart setShowPercentage:NO];
     
-    
 }
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart{

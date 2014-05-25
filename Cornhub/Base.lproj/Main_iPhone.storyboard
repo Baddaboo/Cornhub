@@ -16,22 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEJ-Ra-z6B">
-                                <rect key="frame" x="116" y="426" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginButtonPressed:" destination="Q6T-YG-C9v" eventType="touchUpInside" id="LQx-7C-LwL"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9WW-YU-aIh">
-                                <rect key="frame" x="150" y="292" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start searching..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mve-py-5D8">
-                                <rect key="frame" x="20" y="320" width="280" height="30"/>
+                                <rect key="frame" x="20" y="313" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -39,8 +25,12 @@
                                     <action selector="textDidChange:" destination="Q6T-YG-C9v" eventType="editingChanged" id="HQD-jF-g45"/>
                                 </connections>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMI-tW-Euc">
-                                <rect key="frame" x="0.0" y="65" width="320" height="226"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9WW-YU-aIh">
+                                <rect key="frame" x="271" y="318" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="twitter.png" translatesAutoresizingMaskIntoConstraints="NO" id="iMI-tW-Euc">
+                                <rect key="frame" x="0.0" y="63" width="320" height="242"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -49,14 +39,58 @@
                     <navigationItem key="navigationItem" id="eHa-Gh-9AH"/>
                     <connections>
                         <outlet property="loginActivity" destination="9WW-YU-aIh" id="ZWE-ZH-vkL"/>
-                        <outlet property="loginButton" destination="YEJ-Ra-z6B" id="gnb-Y6-6vm"/>
                         <outlet property="nameField" destination="Mve-py-5D8" id="zhY-Ia-DTG"/>
                         <outlet property="userImageView" destination="iMI-tW-Euc" id="hk1-X2-YRP"/>
+                        <segue destination="64k-wA-Ief" kind="push" identifier="detailPush" id="d1d-Fq-Xyd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfQ-4F-jrj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="731" y="-24"/>
+        </scene>
+        <!--Chart Final View Controller-->
+        <scene sceneID="Dm2-5Q-gRx">
+            <objects>
+                <viewController id="64k-wA-Ief" customClass="ChartFinalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hUU-KJ-BM9"/>
+                        <viewControllerLayoutGuide type="bottom" id="rFu-v9-SBO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iPX-mH-96h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OmH-bJ-85U" customClass="XYPieChart">
+                                <rect key="frame" x="20" y="77" width="280" height="280"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s6a-js-xgY">
+                                        <rect key="frame" x="130" y="130" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWI-aQ-kq9">
+                                <rect key="frame" x="20" y="365" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="30"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RSV-5Y-rhX"/>
+                    <connections>
+                        <outlet property="chartLabel" destination="qWI-aQ-kq9" id="SgU-ho-M3H"/>
+                        <outlet property="loadingChart" destination="s6a-js-xgY" id="OgK-ZS-QII"/>
+                        <outlet property="navItem" destination="RSV-5Y-rhX" id="J3p-nd-Ku5"/>
+                        <outlet property="pieChart" destination="OmH-bJ-85U" id="zWR-RN-Xc0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bDQ-2e-KRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1152" y="-69"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="N57-kS-3Sf">
@@ -153,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEc-gx-FUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1286" y="3"/>
+            <point key="canvasLocation" x="1466" y="499"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lew-cI-Cgu">
@@ -178,6 +212,7 @@
         <image name="Down.png" width="60" height="60"/>
         <image name="Neutral.png" width="60" height="60"/>
         <image name="Up.png" width="60" height="60"/>
+        <image name="twitter.png" width="1139" height="926"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
