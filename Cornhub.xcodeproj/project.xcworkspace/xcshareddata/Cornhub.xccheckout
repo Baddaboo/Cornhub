@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>89C51C5B-D701-404E-8929-ADC6C4113103</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Cornhub</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2210C365-3D58-4E1A-A00E-493C0F7ADCA5</key>
+		<string>https://github.com/Baddaboo/Cornhub.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Cornhub.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2210C365-3D58-4E1A-A00E-493C0F7ADCA5</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Baddaboo/Cornhub.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2210C365-3D58-4E1A-A00E-493C0F7ADCA5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2210C365-3D58-4E1A-A00E-493C0F7ADCA5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Cornhub</string>
+		</dict>
+	</array>
+</dict>
+</plist>
