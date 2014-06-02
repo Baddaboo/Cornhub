@@ -52,6 +52,10 @@
             NSError *error;
             id val = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             NSLog(@"Data: %@",val);
+            if (val == nil){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops." message:@"It looks like the main test server might be down/offline." delegate:self cancelButtonTitle:@"Complain to Aaron" otherButtonTitles: nil];
+                [alert show];
+            }
             self.upValue = [NSNumber numberWithInt:[[[val objectForKey:@"statistics"] valueForKey:@"positive"] intValue]];
             self.downValue = [NSNumber numberWithInt:[[[val objectForKey:@"statistics"] valueForKey:@"negative"]intValue]];
             self.neutralValue = [NSNumber numberWithInt:[[[val objectForKey:@"statistics"] valueForKey:@"neutral"]intValue]];
